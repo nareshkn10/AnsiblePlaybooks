@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: ssh
+  user: ansible
+  become: yes
+
+
+  vars_files: 
+    - user.yml
+
+
+  tasks: 
+    - name: creating user {{user1}}
+      user: 
+        name: "{{user2}}"

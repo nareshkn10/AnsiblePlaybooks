@@ -1,0 +1,47 @@
+--- 
+- name: installing java tomcat
+  hosts: all
+  connection: ssh
+  user: ansible
+  become: true
+
+
+
+  tasks: 
+    - name: installing java software on redhat
+      yum: 
+        name: java
+        state: installed
+      when: ansible_os_family == "RedHat"
+
+    - name: install java software on debian
+      apt: 
+         name: default-jdk
+         state: present
+      when: ansible_os_family == "Debian"
+
+
+    - name: Download tomcat s/w
+      get_url: 
+        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.10/bin/apache-tomcat-10.1.10.tar.gz
+
+        dest: /opt
+
+
+    - name: Extract tomcat s/w
+      unarchive: 
+        src: /opt/apache-tomcat-10.1.10.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: providing executable permissions
+      file: 
+        path: /opt/apache-tomcat-10.1.10/bin/startup.sh
+        mode: 0777
+
+
+    - name: start the service
+      shell: nohup ./startup.sh
+      args: 
+        chdir: /opt/apache-tomcat-10.1.10/bin
+

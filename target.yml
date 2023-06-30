@@ -1,0 +1,7 @@
+--- #My target section playbook
+- hosts: webservers
+  become: yes
+  user: ansible
+  connection: ssh
+
+  

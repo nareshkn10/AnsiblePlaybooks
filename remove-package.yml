@@ -1,0 +1,10 @@
+--- 
+- hosts: all
+  become : yes
+
+
+  tasks: 
+    - name: removing packages from hosts
+      yum: 
+        name: docker
+        state: absent

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+
+
+  vars: 
+    user: sai
+
+
+  tasks: 
+    - name: creating a{user} in hosts
+      user:
+        name: '{{user}}'

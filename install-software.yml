@@ -1,0 +1,11 @@
+--- 
+- hosts: all
+
+ 
+
+  tasks: 
+    - name: installing java software
+      yum: 
+        name: java
+        state: present
+

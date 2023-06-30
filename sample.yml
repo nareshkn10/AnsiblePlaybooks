@@ -1,0 +1,39 @@
+--- 
+- hosts: all
+  become: yes
+
+
+  tasks:
+    - name: create afile with ansible playbook
+      file: 
+        path: /tmp/naresh111file
+        state: file
+
+    - name: crraete  a directory 
+      file: 
+        path: /tmp/raj00 
+        state: directory
+
+    - name: copying a file to host
+      copy:
+        src: ./Adnifile 
+        dest:- hosts: all
+  become: yes
+
+
+  tasks:
+    - name: create afile with ansible playbook
+      file:
+        path: /tmp/naresh111file
+        state: file
+
+    - name: crraete  a directory
+      file:
+        path: /tmp/raj00
+        state: directory
+
+    - name: copying a file to host
+      copy:
+        src: ./Adnifile
+        dest: /home/ansible
+ /home/ansible      
